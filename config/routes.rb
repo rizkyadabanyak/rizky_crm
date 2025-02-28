@@ -13,12 +13,30 @@ Rails.application.routes.draw do
 
   
   get "/testing",to: "user#index"
-  get "/register",to: "user#register"
+  get "/register",to: "user#register",as: "register"
+
   post "/register-action",to: "user#actionRegister",as: "action_register"
 
   get "/logout-action",to: "user#logout",as: "action_logout"
 
   get "dashboard",to: "dashboard#index",as: "dashboard"
+
+  get "potential-customer/create",to: "potential_customers#create",as: "potential_customer_create"
+  post "potential-customer/create-action",to: "potential_customers#create_action",as: "potential_customer_create_action"
+  delete "potential-customer/delete-action/:id",to: "potential_customers#delete_action",as: "potential_customer_delete_action"
+  get "potential-customer/edit/:id",to: "potential_customers#edit",as: "potential_customer_edit"
+  put "potential-customer/edit-action/:id",to: "potential_customers#edit_action",as: "potential_customer_edit_action"
+
+
+
+
+  get "products",to: "products#index",as: "products"
+  get "products/create",to: "products#create",as: "products_create"
+  post "products/create-action",to: "products#create_action",as: "products_create_action"
+  delete "products/delete-action/:id",to: "products#delete_action",as: "products_delete_action"
+  get "products/edit/:id",to: "products#edit",as: "products_edit"
+  put "products/edit-action/:id",to: "products#edit_action",as: "products_edit_action"
+
   # get "/products", to: "products#index"
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

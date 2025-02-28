@@ -6,6 +6,9 @@ class DashboardController < ApplicationController
     redirect_to login_path unless session[:user]  # Gunakan unless untuk lebih rapi
   end
 
+  def create
+
+  end
 
   def index
 

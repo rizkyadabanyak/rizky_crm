@@ -1,0 +1,40 @@
+
+
+<div class="container-fluid">
+
+<h2>
+List Products
+
+<br>
+<br>
+
+<a class="btn btn-success" href="<%= products_create_path%>"> Create</a>
+<br>
+
+</h2>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <% @data.each_with_index do |item,index| %>
+  <tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= item.name%></td>
+      <td>
+      <a class="btn btn-info" href="<%= products_edit_path(item.id_product) %>"> Edit</a>
+       <%= button_to "Delete", products_delete_action_path(item.id_product), method: :delete, data: { confirm: "Yakin ingin menghapus?" }, class: "btn btn-danger" %>
+
+      </td>
+
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+</div>

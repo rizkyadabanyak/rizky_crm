@@ -1,0 +1,29 @@
+<div class="container">
+
+<h2>
+Create Potential Customer
+</h2>
+<br>
+<br>
+<%= form_with url: potential_customer_create_action_path, method: :post, local: true do |f| %>
+<div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+    <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Address</label>
+    <input type="text" class="form-control" id="address" name="address" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>
+
+</div>

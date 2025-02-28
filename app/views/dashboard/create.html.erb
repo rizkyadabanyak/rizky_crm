@@ -8,7 +8,7 @@ List Potential Customer
 <br>
 <br>
 
-<a class="btn btn-success" href="<%= potential_customer_create_path%>"> Create</a>
+<a class="btn btn-success"> Create</a>
 <br>
 
 </h2>
@@ -33,9 +33,7 @@ List Potential Customer
       <td><%= potentialCustomer.phone_number%></td>
       <td><%= potentialCustomer.address%></td>
       <td>
-      <a class="btn btn-info" href="<%= potential_customer_edit_path(potentialCustomer.id_potential_customers) %>"> Edit</a>
-       <%= button_to "Delete", potential_customer_delete_action_path(potentialCustomer.id_potential_customers), method: :delete, data: { confirm: "Yakin ingin menghapus?" }, class: "btn btn-danger" %>
-
+      <a class="btn btn-info"> Edit</a>|<a class="btn btn-danger"> Delete</a>
       </td>
 
     </tr>

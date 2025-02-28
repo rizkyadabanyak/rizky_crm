@@ -11,6 +11,8 @@
 ARG RUBY_VERSION=3.4.2
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
+
+
 # Rails app lives here
 WORKDIR /rails
 
@@ -18,6 +20,9 @@ WORKDIR /rails
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+ENV BUNDLE_PATH=/usr/local/bundle
+RUN bundle config set path "$BUNDLE_PATH"
 
 # Set production environment
 ENV RAILS_ENV="production" \

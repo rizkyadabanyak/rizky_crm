@@ -62,7 +62,8 @@ class UserController < ApplicationController
   
       # cek email 
       if User.exists?(email: email)
-        return render json: { error: "Email sudah digunakan" }, status: :unprocessable_entity
+        redirect_to register_path, alert: "Email sudah digunakan."
+
       end
   
       # save new user
