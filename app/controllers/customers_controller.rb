@@ -51,7 +51,7 @@ class CustomersController < ApplicationController
   
     if data.update(status: "accepted")
       flash[:notice] = "Data berhasil diperbarui!"
-      redirect_to customers_path
+      redirect_to customers_path and return
    
     end
 
