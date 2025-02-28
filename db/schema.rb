@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_171649) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_185613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "customers", force: :cascade do |t|
+    t.integer "potential_customer_id"
+    t.integer "product_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "potential_customers", primary_key: "id_potential_customers", id: :integer, default: -> { "nextval('customer_potential_id_customer_potential_seq'::regclass)" }, force: :cascade do |t|
     t.string "name"
@@ -23,16 +31,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_171649) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product", primary_key: "id_product", id: :serial, force: :cascade do |t|
+  create_table "products", primary_key: "id_product", id: :integer, default: -> { "nextval('product_id_product_seq'::regclass)" }, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

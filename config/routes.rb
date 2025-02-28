@@ -37,6 +37,12 @@ Rails.application.routes.draw do
   get "products/edit/:id",to: "products#edit",as: "products_edit"
   put "products/edit-action/:id",to: "products#edit_action",as: "products_edit_action"
 
+
+  get "customers",to: "customers#index",as: "customers"
+  post "customers/transaction-action",to: "customers#transaction_action",as: "customers_transaction"
+  delete "customers/transaction-delete-action/:id",to: "customers#delete_action",as: "customers_delete_action"
+  post "customers/transaction-aprove-action/:id",to: "customers#aprove_action",as: "customers_aprove_action"
+
   # get "/products", to: "products#index"
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

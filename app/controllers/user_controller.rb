@@ -67,7 +67,7 @@ class UserController < ApplicationController
       end
   
       # save new user
-      user = User.new(name: name, email: email, password: password)
+      user = User.new(name: name, email: email, password: password,level: "employee")
 
       if user.save
         redirect_to login_path, notice: "Registrasi berhasil! Silakan login."

@@ -1,0 +1,87 @@
+
+
+<div class="container-fluid">
+
+<h2>
+List Customer
+</h2>
+
+<div class="container">
+
+<br>
+        <% if session[:user]['level'] == "employee" %>
+       
+
+<%= form_with url: customers_transaction_path, method: :post, local: true do |f| %>
+<div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Customer Name</label>
+    <select class="form-select" aria-label="Default select example" id="potential_customer" name="potential_customer" >
+        <% @potentialCustomer.each_with_index do |item,index| %>
+                <option value="<%= item.id_potential_customers %>"><%= item.name %></option>
+
+        <% end %>
+
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product Name</label>
+    <select class="form-select" aria-label="Default select example" id="product" name="product" >
+        <% @products.each_with_index do |item,index| %>
+                <option value="<%= item.id_product %>"><%= item.name %></option>
+
+        <% end %>
+
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>
+ <% end %>
+</div>
+<br>
+
+<br>
+
+</h2>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Product</th>
+      <th scope="col">Status</th>
+
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @data.each_with_index do |item,index| %>
+  <tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= item.potential_customers_name%></td>
+            <td><%= item.product_name%></td>
+        <td><%= item.status%></td>
+
+      <td>
+
+        <% if item.status == "pending" %>
+            <% if session[:user]['level'] == "employee" %>
+                    <%= button_to "Delete", customers_delete_action_path(item.id_customer), method: :delete, data: { confirm: "Yakin ingin menghapus?" }, class: "btn btn-danger" %>
+
+            <% else %>
+                    <%= button_to "Approve", customers_aprove_action_path(item.id_customer), method: :post, data: { confirm: "Yakin ingin aprove?" }, class: "btn btn-success" %>
+
+            <% end %>
+
+        
+        <% end %>
+      </td>
+
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+</div>
